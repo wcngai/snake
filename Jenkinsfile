@@ -1,11 +1,13 @@
-node ('master'){  
+node ('Built-In Node'){  
     // def app
     stage('Cloning Git') {
         /* Let's make sure we have the repository cloned to our workspace */
        checkout scm
     }  
     stage('SAST'){
-        build 'SECURITY-SAST-SNYK'
+        // build 'SECURITY-SAST-SNYK'
+        
+        sh 'echo SAST'
     }
     stage('Build-and-Tag') {
         /* This builds the actual image; synonymous to
