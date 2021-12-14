@@ -3,6 +3,8 @@ node ('ubuntu-app-agent'){
     stage('Cloning Git') {
         /* Let's make sure we have the repository cloned to our workspace */
        checkout scm
+        
+       sh 'echo cloning git'
     }  
     stage('SAST'){
         // build 'SECURITY-SAST-SNYK'
@@ -12,7 +14,7 @@ node ('ubuntu-app-agent'){
     stage('Build-and-Tag') {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
-        //   app = docker.build("amrit96/snake")
+        app = docker.build("wcngai/snake")
         
         sh 'echo build-and-tag'
     }
