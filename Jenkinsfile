@@ -12,6 +12,7 @@ node ('ubuntu-app-agent'){
         snykSecurity(
           snykInstallation: 'SAST_SNYK',
           snykTokenId: 'SAST_SNYK_CREDENTIAL',
+        )
         
         sh 'echo SAST'
     }
