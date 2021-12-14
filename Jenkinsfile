@@ -29,9 +29,8 @@ node ('ubuntu-app-agent'){
         sh 'echo SECURITY-IMAGE-SCANNER'    
     }
     stage('Pull-image-server') {
-    /*
-         sh "docker-compose down"
-         sh "docker-compose up -d"	*/
+        sh "docker-compose down"
+        sh "docker-compose up -d"
     
         sh 'echo Post-to-dockerhub'
     }
