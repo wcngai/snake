@@ -9,6 +9,10 @@ node ('ubuntu-app-agent'){
     stage('SAST'){
         // build 'SECURITY-SAST-SNYK'
         
+        snykSecurity(
+          snykInstallation: 'SAST_SNYK',
+          snykTokenId: 'SAST_SNYK_CREDENTIAL',
+        
         sh 'echo SAST'
     }
     stage('Build-and-Tag') {
