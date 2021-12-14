@@ -19,10 +19,9 @@ node ('ubuntu-app-agent'){
         sh 'echo build-and-tag'
     }
     stage('Post-to-dockerhub') {
-        /*
-            docker.withRegistry('https://registry.hub.docker.com', 'training_creds') {
+        docker.withRegistry('https://registry.hub.docker.com', 'Jenkins_DevSecOps') {
             app.push("latest")
-        			} */
+        }
         sh 'echo post-to-dockerhub'    
     } 
     stage('SECURITY-IMAGE-SCANNER'){
