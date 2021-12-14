@@ -9,12 +9,11 @@ node ('ubuntu-app-agent'){
     stage('SAST'){
         // build 'SECURITY-SAST-SNYK'
         
-        failOnIssues(false)
-        failOnError (false)
-        
         snykSecurity(
           snykInstallation: 'SAST_SNYK',
           snykTokenId: 'SAST_SNYK_CREDENTIAL',
+          failOnIssues: false,
+          failOnError: false,
         )
         
         sh 'echo SAST'
