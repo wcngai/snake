@@ -19,13 +19,15 @@ node ('ubuntu-app-agent'){
         sh 'echo SAST SNYK'
     }
     stage('SAST - SONAR'){
-        // build 'SECURITY-SAST-SONAR'
-        script {
-          def scannerHome = tool 'sonarscan';
-          withSonarQubeEnv('sonarqube') {
-            sh "${tool("sonarscan ")}/bin/sonar-scanner -Dsonar.projectKey=4382a7d033e50c760d559c4d1b70c29c4fbd42b3 -Dsonar.projectName=node-multiplayer-snake"
-          }
-        }
+        // build 'SECURITY-SAST-SONAR'        
+        script{
+            def scannerHome = tool 'sonarscan';
+            withSonarQubeEnv('sonarqube') {
+                sh "${tool("sonarscan")}/bin/sonar-scanner \
+                    -Dsonar.projectKey=4382a7d033e50c760d559c4d1b70c29c4fbd42b3 \
+                    -Dsonar.projectName=node-multiplayer-snake"
+            }
+
         sh 'echo SAST SONAR'
     }     
     stage('Build-and-Tag') {
