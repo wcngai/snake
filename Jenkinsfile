@@ -20,7 +20,7 @@ node ('ubuntu-app-agent'){
     stage('SAST-SONAR'){
         // build 'SECURITY-SAST-SONAR'        
         script{
-            withSonarQubeEnv('SAST_SONAR') {
+            withSonarQubeEnv('SonarQube Scanner 4.6.2.2472') {
                 sh "npm run sonar"
             }
         }
