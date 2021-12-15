@@ -23,7 +23,7 @@ node ('ubuntu-app-agent'){
         script {
           def scannerHome = tool 'sonarscan';
           withSonarQubeEnv('sonarqube') {
-            sh "${tool("sonarscan ")}/bin/sonar-scanner -Dsonar.projectKey=4382a7d033e50c760d559c4d1b70c29c4fbd42b3 -Dsonar.projectName=SONAR_ADMIN_TOKEN"
+            sh "${tool("sonarscan ")}/bin/sonar-scanner -Dsonar.projectKey=4382a7d033e50c760d559c4d1b70c29c4fbd42b3 -Dsonar.projectName=node-multiplayer-snake"
           }
         }
         sh 'echo SAST SONAR'
