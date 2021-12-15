@@ -42,7 +42,7 @@ node {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
         //app = docker.build("wcngai/snake")
-        app = docker.build("${IMAGE_NAME}")
+        app = docker.build(${IMAGE_NAME})
         
         sh 'echo build-and-tag'
     }
