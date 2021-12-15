@@ -20,7 +20,7 @@ node ('ubuntu-app-agent'){
     stage('SAST-SONAR'){
         // build 'SECURITY-SAST-SONAR'        
         script{
-            def scannerHome = tool 'sonarscan';
+            def scannerHome = tool 'SonarQube Scanner 4.6.2.2472';
             withSonarQubeEnv('sonarqube') {
                 //sh "npm run sonar"
                 sh "${tool("sonarscan")}/bin/sonar-scanner \
