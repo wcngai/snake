@@ -1,10 +1,5 @@
 //node ('ubuntu-app-agent'){
 node {      
-	
-    environment { 
-        IMAGE_NAME = 'wcngai/snake'
-    }
-    
     // def app
     stage('Cloning Git') {
         /* Let's make sure we have the repository cloned to our workspace */
@@ -41,10 +36,17 @@ node {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
         //app = docker.build("wcngai/snake")
-        app = docker.build("${IMAGE_NAME}")
+        app = docker.build('wcngai/snake')
         
         sh 'echo build-and-tag'
     }
+	
+    stage('Docker-image-scanning') {
+	sh "trivy image wcngai/snake > scanning.txt"
+	
+        sh 'echo Docker-image-scanning'    
+    } 
+	
     stage('Post-to-dockerhub') {
         docker.withRegistry('https://registry.hub.docker.com', 'Jenkins_DevSecOps') {
             app.push("latest")
