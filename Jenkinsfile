@@ -6,9 +6,8 @@ node ('ubuntu-app-agent'){
         
        sh 'echo cloning git'
     }  
-    stage('SAST - SNYK'){
+    stage('SAST-SNYK'){
         // build 'SECURITY-SAST-SNYK'
-        
         snykSecurity(
           snykInstallation: 'SAST_SNYK',
           snykTokenId: 'SAST_SNYK_CREDENTIAL',
@@ -18,7 +17,7 @@ node ('ubuntu-app-agent'){
         
         sh 'echo SAST SNYK'
     }
-    stage('SAST - SONAR'){
+    stage('SAST-SONAR'){
         // build 'SECURITY-SAST-SONAR'        
         script{
             def scannerHome = tool 'sonarscan';
