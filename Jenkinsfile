@@ -1,5 +1,11 @@
 //node ('ubuntu-app-agent'){
 node {  
+    parameters {
+	    environment {
+		    IMAGE_NAME = 'wcngai/snake'
+	    }
+    }
+    
     // def app
     stage('Cloning Git') {
         /* Let's make sure we have the repository cloned to our workspace */
@@ -35,7 +41,8 @@ node {
     stage('Build-and-Tag') {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
-        app = docker.build("wcngai/snake")
+        //app = docker.build("wcngai/snake")
+        app = docker.build("${IMAGE_NAME}")
         
         sh 'echo build-and-tag'
     }
