@@ -6,7 +6,7 @@ node ('ubuntu-app-agent'){
         
        sh 'echo cloning git'
     }  
-    stage('SAST'){
+    stage('SAST - SNYK'){
         // build 'SECURITY-SAST-SNYK'
         
         snykSecurity(
@@ -16,8 +16,17 @@ node ('ubuntu-app-agent'){
           failOnError: false,
         )
         
-        sh 'echo SAST'
+        sh 'echo SAST SNYK'
     }
+    stage('SAST - SONAR'){
+        // build 'SECURITY-SAST-SONAR'
+        
+
+        
+        sh 'echo SAST SONAR'
+    }    
+    
+    
     stage('Build-and-Tag') {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
