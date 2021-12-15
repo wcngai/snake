@@ -15,6 +15,7 @@ node ('ubuntu-app-agent'){
           failOnError: false,
         )
         
+        
         sh 'echo SAST SNYK'
     }
     stage('SAST-SONAR'){
