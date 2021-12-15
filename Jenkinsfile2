@@ -27,6 +27,7 @@ node ('ubuntu-app-agent'){
                     -Dsonar.projectKey=4382a7d033e50c760d559c4d1b70c29c4fbd42b3 \
                     -Dsonar.projectName=node-multiplayer-snake"
             }
+        }
 
         sh 'echo SAST SONAR'
     }     
