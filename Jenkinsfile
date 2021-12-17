@@ -41,7 +41,7 @@ node {
         sh 'echo build-and-tag'
     }
 	
-    stage('Docker-image-scanning') {
+    stage('DAST-Trivy-Docker-Image-Scanning') {
 	sh "trivy image wcngai/snake > scanning.txt"
 	
         sh 'echo Docker-image-scanning'    
