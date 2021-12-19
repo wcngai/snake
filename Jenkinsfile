@@ -80,7 +80,7 @@ node {
     }	
 }
 
-def notifyBuild(string buildStatus = 'STARTED' {
+def notifyBuild(string buildStatus = 'STARTED') {
 	buildStatus = buildStatus ?: 'SUCCESSFUL'
 	
 	def subject = "${buildStatus}: Job ${env.JOB_NAME} [${env.BUILD_NUMBER}]"
