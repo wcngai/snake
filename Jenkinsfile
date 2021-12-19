@@ -1,6 +1,9 @@
 //node ('ubuntu-app-agent'){
 node {      
-    // def app
+    def app
+    try {
+      notifyBuild("STARTED") 
+	    
     stage('Cloning Git') {
         /* Let's make sure we have the repository cloned to our workspace */
        checkout scm
@@ -68,4 +71,30 @@ node {
         //  build 'SECURITY-DAST-OWASP_ZAP'
         sh 'echo DAST'
     }
+	   
+    } catch (e) {
+        currentBuild.result = "FAILED"
+	throw e
+    } finally {
+	notifyBuild(currentBuild.result)
+    }	
+}
+
+def notifyBuild(string buildStatus = 'STARTED' {
+	buildStatus = buildStatus ?: 'SUCCESSFUL'
+	
+	def subject = "${buildStatus}: Job ${env.JOB_NAME} [${env.BUILD_NUMBER}]"
+	
+	def details = "Job execution status"
+	
+	emailext (
+		subject: subject,
+		body: details,
+		mimeType: 'text/html',
+		to: 'wcngai@gmail.com'
+	)
+		
+
+	
+	
 }
